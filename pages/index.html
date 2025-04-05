@@ -1,59 +1,141 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mein Blog</title>
-  <link rel="stylesheet" href="styles.css">
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Ersetze die URL durch den Pfad zu deinem PHP-API-Endpoint
-      const apiUrl = 'http://deine-domain.de/api/articles.php';
-
-      fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-          const container = document.getElementById('articles-container');
-          if (data && data.length > 0) {
-            data.forEach(article => {
-              const articleElement = document.createElement('div');
-              articleElement.classList.add('article');
-
-              // Titel hinzufügen
-              const titleElement = document.createElement('h2');
-              titleElement.textContent = article.title;
-              articleElement.appendChild(titleElement);
-
-              // Inhalt hinzufügen. Hier wird davon ausgegangen, dass der Inhalt HTML enthält.
-              const contentElement = document.createElement('p');
-              contentElement.innerHTML = article.content;
-              articleElement.appendChild(contentElement);
-
-              container.appendChild(articleElement);
-            });
-          } else {
-            container.textContent = "Keine Artikel gefunden.";
-          }
-        })
-        .catch(error => {
-          console.error('Fehler beim Laden der Artikel:', error);
-        });
-    });
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 </head>
 <body>
-  <header>
-    <h1>Willkommen zu meinem Blog</h1>
-  </header>
-  
-  <main>
-    <div id="articles-container" class="articles">
-      <!-- Artikel werden hier dynamisch eingefügt -->
-    </div>
-  </main>
-  
-  <footer>
-    <p>&copy; 2025 Mein Blog. Alle Rechte vorbehalten.</p>
-  </footer>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <h1>ModernBlog</h1>
+                </div>
+                <div class="nav-links">
+                    <a href="#" class="active">Home</a>
+                    <a href="#articles">Articles</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to ModernBlog</h1>
+                <p>A clean, minimalist blog for sharing ideas and stories</p>
+                <a href="#articles" class="btn primary-btn">Read Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured" class="featured">
+        <div class="container">
+            <h2 class="section-title">Featured Article</h2>
+            <div class="featured-article">
+                <div class="featured-img">
+                    <img src="/placeholder.svg?height=400&width=600" alt="Featured Article">
+                </div>
+                <div class="featured-content">
+                    <div class="article-meta">
+                        <span class="category">Technology</span>
+                        <span class="date">June 15, 2023</span>
+                    </div>
+                    <h3>The Future of Web Development in 2023</h3>
+                    <p>Explore the latest trends and technologies shaping the future of web development. From AI-powered tools to new frameworks that are changing how we build websites.</p>
+                    <a href="article.html?id=1" class="read-more">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="articles" class="articles">
+        <div class="container">
+            <h2 class="section-title">Latest Articles</h2>
+            <div class="articles-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="technology">Technology</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="business">Business</button>
+            </div>
+            <div class="articles-grid" id="articles-container">
+                <!-- Articles will be loaded here via JavaScript -->
+            </div>
+            <div class="load-more">
+                <button id="load-more-btn" class="btn secondary-btn">Load More</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="newsletter" class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest articles and news delivered to your inbox</p>
+                <form id="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn primary-btn">Subscribe</button>
+                    </div>
+                </form>
+                <div id="subscription-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>ModernBlog</h2>
+                    <p>A place for modern ideas and stories</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#articles">Articles</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Categories</h3>
+                        <ul>
+                            <li><a href="#">Technology</a></li>
+                            <li><a href="#">Design</a></li>
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">Lifestyle</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Connect</h3>
+                        <ul class="social-links">
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ModernBlog. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
